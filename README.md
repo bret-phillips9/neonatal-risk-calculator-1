@@ -11,7 +11,7 @@ This application is for demonstration purposes only.  This application is not in
 This ia a fairily standrad R Shiny application structure with three files.
 
 ### global.R
-This file stores the 
+This file stores common code such as library dependencies.
 
 ### ui.R
 This file stores the user interface.
