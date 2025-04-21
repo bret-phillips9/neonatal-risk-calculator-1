@@ -5,7 +5,7 @@ Author: Bret Phillips
 This is a project to create a death/disability risk calculator for very low birth weight infants based on the research of [Schmidt et al. (2015)](#Cite).  The project is in R Shiny, to be hosted on Posit Connect Cloud.
 
 ## Disclaimer
-This application is for demonstration purposes only.  This application is not intended for, and should not be used for, any clinical or scientific purpose.
+This application is for __demonstration purposes only__.  This application is not intended for, and should not be used for, any clinical or scientific purpose.
 
 ## File Structure
 This ia a fairily standrad R Shiny application structure with three files.
