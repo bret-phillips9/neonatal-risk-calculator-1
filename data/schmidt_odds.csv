@@ -1,0 +1,9 @@
+﻿outcome,base_rate,lcl95,odds,ucl95
+Death or impairment,0.112,2,2.4,2.9
+Death,0.008,1.7,2.5,3.6
+Cognitive impairment,0.022,2.1,2.7,3.6
+Motor impairment,0.01,2.6,3.6,5.1
+Behavior problem,0.046,1.2,1.6,2.1
+Poor health,0.022,1.4,1.9,2.6
+Deafness,0.013,1.7,2.4,3.4
+Blindness,0.0001,5.1,10.2,20.7
