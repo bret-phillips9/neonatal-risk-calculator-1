@@ -29,11 +29,11 @@ server <- function(input, output, session){
      })
      
      output$OverallPlot <- renderPlot({
-          print(overall_plot)
+          print(overall_plot())
      })
      
      output$SpecificPlot <- renderPlot({
-          print(specific_plot)
+          print(specific_plot())
      })
      
      output$Report <- downloadHandler(
