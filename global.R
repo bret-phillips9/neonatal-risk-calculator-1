@@ -2,7 +2,6 @@ library(shiny)
 library(bslib)
 library(ggplot2)
 library(dplyr)
-library(rmarkdown)
 
 odds <- read.csv("./data/schmidt_odds.csv")
 
