@@ -21,7 +21,12 @@ appMain <- mainPanel(
                    p("This is an interactive chart.  Select/de-select checkboxes at left to see change in probabilities below."),
                    plotOutput("SpecificPlot")
                    ),
-          tabPanel("Report"),
+          tabPanel("Report",
+                   strong("INSTRUCTIONS"),
+                   p("Click button below to download a copy of your charts."),
+                   downloadButton(outputId = 'Report',
+                                  label = 'Generate Report')
+                   ),
           tabPanel("Reference",
                    p("This dashboard is based on the work of"),
                    p("Schmidt, B., Roberts, R.S., Davis, P.G., Doyle, L.W., Asztalos, E.V., Opie, G., Bairam, A., Solimano, A., Arnon, S., & Sauve, R.S. (2015).  Prediction of late death or disability at age 5 years using a count of 3 neonatal morbidities in very low birth weight infants. ",
