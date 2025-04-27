@@ -1,8 +1,12 @@
 server <- function(input, output, session){
      
+     morbidities <- reactive({
+          length(input$SelectMorbid)
+     })
+     
      SpecificData <- reactive({
           risk_df |> 
-               filter(n_morbid == length(input$SelectMorbid)) |> 
+               filter(n_morbid == morbidities()) |> 
                filter(outcome != "Death or impairment") |> 
                select(outcome, avg_odds) 
      })
@@ -15,7 +19,7 @@ server <- function(input, output, session){
                xlab("Number of morbidities") +
                ylab("Probability (%)") +
                geom_errorbar(aes(ymin = lower, ymax = upper)) +
-               ggtitle("Overall Probability (95% CI) of Death or Impairment at 5 Years")
+               ggtitle("Overall Probability (95% CI) of Death or Impairment at 5 Years") 
      })
      
      specific_plot <- reactive({
@@ -25,6 +29,8 @@ server <- function(input, output, session){
                xlab("Probability (%)") +
                ylab(NULL) +
                scale_x_continuous(limits = c(0,25)) +
+               labs(caption = paste("Results based on having", morbidities(), "of Schmidt's morbidities.")) +
+               theme(plot.caption = element_text(hjust = 0)) +
                ggtitle("Average Probability of Specific Adverse Outcomes at 5 Years")
      })
      
