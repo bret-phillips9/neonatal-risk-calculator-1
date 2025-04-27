@@ -7,7 +7,7 @@ server <- function(input, output, session){
                select(outcome, avg_odds) 
      })
      
-     output$OverallPlot <- renderPlot({
+     overall_plot <- reactive({
           ggplot(risk_df[risk_df$outcome=="Death or impairment",], aes(x = n_morbid, y = avg_odds, label = avg_odds)) +
                geom_point() +
                geom_text(hjust = "right", size = 12 / .pt) +
@@ -18,7 +18,7 @@ server <- function(input, output, session){
                ggtitle("Overall Probability (95% CI) of Death or Impairment at 5 Years")
      })
      
-     output$SpecificPlot <- renderPlot({
+     specific_plot <- reactive({
           ggplot(SpecificData()) +
                geom_col(aes(x = avg_odds, y = reorder(outcome, avg_odds)), fill = "blue") +
                geom_text(aes(x = avg_odds, y = reorder(outcome, avg_odds), label = avg_odds), hjust = "left", size = 12 / .pt) +
@@ -27,5 +27,24 @@ server <- function(input, output, session){
                scale_x_continuous(limits = c(0,25)) +
                ggtitle("Average Probability of Specific Adverse Outcomes at 5 Years")
      })
+     
+     output$OverallPlot <- renderPlot({
+          print(overall_plot)
+     })
+     
+     output$SpecificPlot <- renderPlot({
+          print(specific_plot)
+     })
+     
+     output$Report <- downloadHandler(
+          filename = 'Report.pdf',
+          
+          content = function(file){
+               pdf(file)
+               print(overall_plot())
+               print(specific_plot())
+               dev.off()
+          }
+     )
      
 }
